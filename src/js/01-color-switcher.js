@@ -7,10 +7,8 @@ const refs = {
   startBtn: document.querySelector('button[data-start]'),
   stopBtn: document.querySelector('button[data-stop]'),
   bodyColor: document.querySelector('body'),
+  button:document.querySelector('button')
 }
-
-refs.bodyColor.style.justifyContent = 'center';
-refs.bodyColor.style.display = 'flex';
 
 class Timer {
   constructor({cangeColor}) {
