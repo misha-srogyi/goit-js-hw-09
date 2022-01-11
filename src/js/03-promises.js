@@ -8,24 +8,28 @@ const refs = {
 refs.form.addEventListener('input', onFormInput);
 refs.button.addEventListener('click', onFormSubmit);
 
-let formValue = {};
+let formValue = {}
 
 function onFormInput(evt) {
   formValue[evt.target.name] = evt.target.value;
-  // console.log(formValue);
+  // console.log(formValue[evt.target.name] = evt.target.value);
+  
 };
 
 function onFormSubmit(evt) {
   evt.preventDefault();
+
+  let inputDelay = Number(formValue.delay);
+  let step = Number(formValue.step);
+  let amount = Number(formValue.amount);
+  //Конвертуємо NaN в 0
+  step = step || 0;
+ 
   
-  const inputDelay = Number(formValue.delay);
-  const step = Number(formValue.step);
-  const amount = Number(formValue.amount);
-  
-  for (let i = 0; i <= amount; i ++) {
+  for (let i = 0; i < amount; i++) {
     const position = i + 1;
     const delay = inputDelay + step * i;
-    
+   
     createPromise(position, delay)
     .then(({position, delay}) => {
       Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
